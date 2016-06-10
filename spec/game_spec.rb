@@ -31,4 +31,9 @@ describe Game do
     end
   end
 
+  describe '#players_setup' do
+    it 'contains a set players array' do
+      expect(game.players_setup).to eq [player1, player2]
+    end
+  end
 end

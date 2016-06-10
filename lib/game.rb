@@ -2,8 +2,11 @@ require_relative './player.rb'
 
 class Game
 
+  attr_reader :players_setup
+
   def initialize(player1, player2)
     @players = [player1, player2]
+    @players_setup = [player1, player2]
   end
 
   def player1

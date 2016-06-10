@@ -1,6 +1,6 @@
 
 <h1>
-<%= @game.player1.name %> has attacked <%= @game.player2.name %> <%= @game.player2.hitpoints %> HP !
+<%= @game.players_setup[0].name %> has attacked <%= @game.players_setup[1].name %> <%= @game.players_setup[1].hitpoints %> HP !
 </h1>
 
 <form action='/play' method='get'>
