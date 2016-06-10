@@ -5,7 +5,7 @@ class Attack
     @defender = defender
   end
 
-  def perform_attack
-    @defender.receive_damage
+  def run(defender)
+    defender.receive_damage
   end
 end

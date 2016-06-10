@@ -1,10 +1,11 @@
 class Game
 
-  attr_reader :players, :current_turn
+  attr_reader :players, :current_turn_player
 
-  def initialize(player1, player2)
+  def initialize(player1, player2, attack_class = Attack)
     @players = [player1, player2]
-    @current_turn = player1
+    @current_turn_player = player1
+    @attack_class = attack_class
   end
 
   def player1
@@ -16,17 +17,21 @@ class Game
   end
 
   def attack
-    attack = Attack.new(@current_turn, opponent(@current_turn))
-    attack.perform_attack
+    attack = @attack_class.new
+    attack.run(opponent_of(@current_turn_player))
     change_turn
   end
 
-  def change_turn
-    @current_turn = opponent(@current_turn)
+
+
+  def opponent_of(current_player)
+    @players.find { |player| player != @current_turn_player }
   end
 
-  def opponent(current_player)
-    @players.find { |player| player != @current_turn }
+  private
+
+  def change_turn
+    @current_turn_player = opponent_of(@current_turn_player)
   end
 
 

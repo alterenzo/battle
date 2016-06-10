@@ -2,7 +2,7 @@ require 'attack'
 
 describe Attack do
 
-  subject(:attack) { described_class.new(player1, player2)}
+  subject(:attack) { described_class.new}
   let(:player1) { double :player1, receive_damage: nil }
   let(:player2) { double :player2, receive_damage: nil }
 

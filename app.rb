@@ -22,15 +22,15 @@ class Battle < Sinatra::Base
 
   get '/play' do
     @game = $game
-    @player1 = @game.current_turn
-    @player2 = @game.opponent(@player1)
+    @player1 = @game.current_turn_player
+    @player2 = @game.opponent_of(@player1)
     erb :play
   end
 
   get '/attack' do
     @game = $game
-    @player1 = @game.current_turn
-    @player2 = @game.opponent(@player1)
+    @player1 = @game.current_turn_player
+    @player2 = @game.opponent_of(@player1)
     @game.attack
     erb :attack
   end
