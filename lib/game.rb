@@ -9,6 +9,14 @@ class Game
     @players_setup = [player1, player2]
   end
 
+  def self.create(player1, player2)
+    @game = Game.new(player1, player2)
+  end
+
+  def self.instance
+    @game
+  end
+
   def player1
     @players.first
   end
@@ -24,6 +32,10 @@ class Game
 
   def switch_turn
     @players.reverse!
+  end
+
+  def game_over?
+    @players.select{|player| player.hitpoints <= 0 }.any?
   end
 
 end

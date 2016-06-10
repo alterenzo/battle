@@ -2,8 +2,9 @@ require 'game'
 
 describe Game do
   subject(:game) { described_class.new(player1, player2) }
-  let(:player1) { double(:player1) }
-  let(:player2) { double(:player2) }
+  let(:player1) { double(:player1, hitpoints: 10) }
+  let(:player2) { double(:player2, hitpoints: 10) }
+  let(:losing_player) { double(:losing_player, hitpoints: 0) }
 
   describe '#attack' do
     it 'can attack another player' do
@@ -34,6 +35,16 @@ describe Game do
   describe '#players_setup' do
     it 'contains a set players array' do
       expect(game.players_setup).to eq [player1, player2]
+    end
+  end
+
+  describe '#game_over?' do
+    it 'should be game over when a player reached 0 HP' do
+      losing_game = Game.new(player1, losing_player)
+      expect(losing_game).to be_game_over
+    end
+    it 'should not be game over when both players alive' do
+      expect(game).to_not be_game_over
     end
   end
 end
