@@ -1,5 +1,11 @@
 
+<h1><%= @game.player1.name %> Turn!
+</h1>
+
+
 <h1><%= @game.player1.name %> vs. <%= @game.player2.name%> <%= @game.player2.hitpoints%> HP</h1>
+
+
 
 <form action='/attacking' method='post'>
   <input type='submit' value='Attack'>

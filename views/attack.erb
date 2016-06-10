@@ -2,3 +2,7 @@
 <h1>
 <%= @game.player1.name %> has attacked <%= @game.player2.name %> <%= @game.player2.hitpoints %> HP !
 </h1>
+
+<form action='/play' method='get'>
+  <input type='submit' value='End Turn'>
+</form>
